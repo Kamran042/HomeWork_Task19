@@ -1,77 +1,4 @@
-// function addEmployee() {
-//   // Formdakı məlumatları almaq
-//   var name = $("#name").val();
-//   var surname = $("#surname").val();
-//   var age = $("#age").val();
-//   var nationality = $("#nationality").val();
-//   var position = $("#position").val();
-//   var experience = $("#experience").val();
 
-//   // Bütün sahələrin dolu olub-olmamasını yoxlamaq
-//   if (name && surname && age && nationality && position) {
-//     // Yeni bir sətir yaradıb cədvələ əlavə etmək
-//     var newRow =
-//       "<tr>" +
-//       "<td>" +
-//       name +
-//       "</td>" +
-//       "<td>" +
-//       surname +
-//       "</td>" +
-//       "<td>" +
-//       age +
-//       "</td>" +
-//       "<td>" +
-//       nationality +
-//       "</td>" +
-//       "<td>" +
-//       position +
-//       "</td>" +
-//       "<td>" +
-//       experience +
-//       "</td>" +
-//       "<td><button class='btn btn-info btn-sm' onclick='editEmployee(this)'>Edit</button></td>" +
-//       "<td><button class='btn btn-danger btn-sm' onclick='deleteEmployee(this)'>Delete</button></td>" +
-//       "</tr>";
-
-//     // Cədvələ yeni sətiri əlavə etmək
-//     $("#employeeList").append(newRow);
-
-//     // Formu təmizləmək
-//     $("#registerForm")[0].reset();
-//   } else {
-//     // İstifadəçiyə bütün sahələri doldurmağı xatırlatmaq
-//     alert("Bütün sahələri doldurun.");
-//   }
-// }
-
-// function deleteEmployee(row) {
-//   $(row).closest("tr").remove();
-// }
-
-// function editEmployee(row) {
-//   // Seçilmiş sətrin bütün məlumatlarını alır
-//   var cells = $(row).closest("tr").find("td");
-
-//   // Məlumatları form sahələrinə doldurur
-//   var name = cells.eq(0).text();
-//   var surname = cells.eq(1).text();
-//   var age = cells.eq(2).text();
-//   var nationality = cells.eq(3).text();
-//   var position = cells.eq(4).text();
-//   var experience = cells.eq(5).text();
-
-//   // Form sahələrinə məlumatları doldurmaq
-//   $("#name").val(name);
-//   $("#surname").val(surname);
-//   $("#age").val(age);
-//   $("#nationality").val(nationality);
-//   $("#position").val(position);
-//   $("#experience").val(experience);
-
-//   // Seçilmiş sətri cədvəldən silmək
-//   $(row).closest("tr").remove();
-// }
 
 const form = document.querySelector("#form");
 const nameİnp = document.querySelector("#name");
@@ -79,7 +6,7 @@ const surnameİnp = document.querySelector("#surname");
 const ageİnp = document.querySelector("#age");
 const nationality = document.querySelector("#nationality");
 const position = document.querySelector("#position");
-const experience = document.querySelector("#experience");
+const salary = document.querySelector("#salary");
 const btnAdd = document.querySelector("#btnAdd");
 const btnEdit = document.querySelector("#btnEdit");
 const employeeList = document.querySelector("#employeeList");
@@ -93,7 +20,7 @@ btnAdd.addEventListener("click", (e) => {
     ageİnp.value &&
     nationality.value &&
     position.value &&
-    experience.value
+    salary.value
   ) {
     e.preventDefault;
     let person = {
@@ -103,7 +30,7 @@ btnAdd.addEventListener("click", (e) => {
       age: ageİnp.value,
       nationality: nationality.value,
       position: position.value,
-      experience: experience.value,
+      salary: salary.value,
     };
     id++;
     listArr.push(person);
@@ -125,7 +52,7 @@ function renderUI(items) {
         <td>${items[i].age}</td>
         <td>${items[i].nationality}</td>
         <td>${items[i].position}</td>
-        <td>${items[i].experience}</td>
+        <td>${items[i].expesalaryrience}</td>
         <td>
             <button class="btn btn-info btn-sm" onclick="editHander(${items[i].id})">Edit</button>
         </td>
@@ -142,7 +69,7 @@ function renderUI(items) {
   ageİnp.value = "";
   nationality.value = "";
   position.value = "";
-  experience.value = "";
+  salary.value = "";
 }
 
 function deleteHander(id) {
@@ -165,7 +92,7 @@ function editHander(id){
     ageİnp.value = `${taarget.age}`;
     nationality.value = `${taarget.nationality}`;
     position.value = `${taarget.position}`;
-    experience.value = `${taarget.experience}`;
+    salary.value = `${taarget.salary}`;
     console.log(editArrinde);
 }
 
@@ -175,7 +102,7 @@ btnEdit.addEventListener('click',()=>{
     listArr[editArrinde].age =   ageİnp.value 
     listArr[editArrinde].nationality =   nationality.value 
     listArr[editArrinde].position =   position.value 
-    listArr[editArrinde].experience =   experience.value 
+    listArr[editArrinde].salary =   salary.value 
     editArrinde = 0
     btnAdd.style.display = "block";
     btnEdit.style.display= "none";
